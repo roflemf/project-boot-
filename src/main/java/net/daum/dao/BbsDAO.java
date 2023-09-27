@@ -9,8 +9,20 @@ public interface BbsDAO {
 
 	void insertBbs(BbsVO b);
 
-	int getRowCount();
+	int getRowCount(PageVO p);
 
 	List<BbsVO> getBbsList(PageVO p);
+
+	void updateHit(int bbs_no);
+
+	BbsVO getBbsCont(int bbs_no);
+
+	void updateLevel(BbsVO rb);
+
+	void replyBbs(BbsVO rb);
+
+	void editBbs(BbsVO b);
+
+	void delBbs(int bbs_no);
 
 }
