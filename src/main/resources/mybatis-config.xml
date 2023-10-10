@@ -11,6 +11,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  	<!-- BbsVO 빈클래스 객체 별칭 이름 bbs로 지정 -->
  	
  	<typeAlias type="net.daum.vo.PageVO" alias="page" />
- 	
+ 	<typeAlias type="net.daum.vo.AdminVO" alias="admin" />
+ 	<typeAlias type="net.daum.vo.MemberVO" alias="member" />
+ 	<typeAlias type="net.daum.vo.MemberVO" alias="zipcode" />
  </typeAliases>
 </configuration>
