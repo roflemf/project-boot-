@@ -2,6 +2,8 @@ package net.daum.pwdconv;
 
 import java.security.MessageDigest;
 
+import net.daum.vo.MemberVO;
+
 public class PwdChange
 {
 	/************ 비밀번호 암호화 *******************/
@@ -44,4 +46,6 @@ public class PwdChange
        
    return temp;   
   }
+
+	
 }

@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!--아이디 중복검색 -->
 	<select id = "m_idcheck" resultType="member">
-	 select * from member where member_id = #{id}
+	 select * from member where mem_id = #{id} <!--  #{id}; DAOImpl 변수-->
 	</select>
 	
 	<!-- 우편주소 검색 -->
@@ -34,5 +34,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     #{mem_addr2},#{mem_phone01},#{mem_phone02},#{mem_phone03},#{mail_id},
     #{mail_domain},1,sysdate)
   </insert>
+  
+  <!-- 비번찾기 : 아이디오 회원이름을 기준으로 회원정보 검색 -->
+  <select id = "p_find" resultType="member">
+   select * from member where mem_id = #{mem_id} and mem_name = #{mem_name}
+  </select>
+  
+  <!-- 암호화 된 임시비번으로 수정 -->
+  <update id ="p_edit" > <!-- 파라미터 타입 생략 -->
+   update member set mem_pwd=#{mem_pwd} where mem_id=#{mem_id}
+  </update>
 
+  <!-- mem_state=1인 경우 로그인 인증처리 -->
+  <select id = "m_loginCheck" resultType="member">
+   select * from member where mem_id=#{mem_id} and mem_state=1
+   <!-- DAOImpl의 전달인자 값인  #{login_id}로 해도 됌-->
+  </select>
+  
+  <!-- 회원정보 불러오기-->
+  <select id = "member_Info" resultType="member"> <!-- resultType= "net.daum.vo.MemberVO" 도 가능 -->
+   select * from member where mem_id= #{id}
+  </select>
+  
+  <!-- 정보수정완료 -->
+  <update id ="medit_ok">
+   update member set mem_pwd=#{mem_pwd}, mem_name=#{mem_name}, mem_zip=#{mem_zip}, 
+   mem_zip2=#{mem_zip2}, mem_addr=#{mem_addr}, mem_addr2=#{mem_addr2}, 
+   mem_phone01=#{mem_phone01}, mem_phone02=#{mem_phone02}, mem_phone03=#{mem_phone03},
+   mail_id=#{mail_id}, mail_domain=#{mail_domain} where mem_id=#{mem_id}
+  </update>
+  
 </mapper>

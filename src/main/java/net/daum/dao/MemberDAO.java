@@ -13,4 +13,14 @@ public interface MemberDAO {
 
 	void insertMember(MemberVO m);
 
+	MemberVO pwdMember(MemberVO m);
+
+	void updatePwd(MemberVO m);
+
+	MemberVO loginCheck(String login_id);
+
+	MemberVO getMember(String id);
+
+	void updateMember(MemberVO m);
+
 }
